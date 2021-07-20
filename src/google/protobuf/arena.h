@@ -491,11 +491,11 @@ class PROTOBUF_EXPORT alignas(8) Arena final {
     static_assert(
         InternalHelper<T>::is_arena_constructable::value,
         "CreateMessage can only construct types that are ArenaConstructable");
-    if (arena == NULL) {
-      return new T(nullptr, std::forward<Args>(args)...);
-    } else {
-      return arena->DoCreateMessage<T>(std::forward<Args>(args)...);
-    }
+    //if (arena == NULL) {
+    return new T(nullptr, std::forward<Args>(args)...);
+    //} else {
+    //  return arena->DoCreateMessage<T>(std::forward<Args>(args)...);
+    //}
   }
 
   // This specialization for no arguments is necessary, because its behavior is
@@ -506,11 +506,11 @@ class PROTOBUF_EXPORT alignas(8) Arena final {
     static_assert(
         InternalHelper<T>::is_arena_constructable::value,
         "CreateMessage can only construct types that are ArenaConstructable");
-    if (arena == NULL) {
-      return new T();
-    } else {
-      return arena->DoCreateMessage<T>();
-    }
+    //if (arena == NULL) {
+    return new T();
+    //} else {
+    // return arena->DoCreateMessage<T>();
+    //}
   }
 
   template <typename T, typename... Args>
